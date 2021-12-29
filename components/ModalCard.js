@@ -16,7 +16,7 @@ export default function ModalCard({item}){
 	const btnRef = useRef();
 	return (
 		<>
-		    <NoticeCard ref ={btnRef} item={item} onOpen={onOpen}/>
+		    <NoticeCard refs ={btnRef} item={item} onOpen={onOpen}/>
 			<Modal size="full" isOpen={isOpen} onClose={onClose} isCentered scrollBehavior="inside">
 				<ModalOverlay/>
 				<ModalContent>

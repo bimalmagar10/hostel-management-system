@@ -53,5 +53,6 @@ const newsAndNotices = [
 		description:`Hi bimal Thapa Magar.What you doin' mate?`
 	}
 ];
+const newsUrl=`https://my-json-server.typicode.com/bimalmagar10/json-api/news`;
 
-export {sidebarContents,newsAndNotices};
+export {sidebarContents,newsAndNotices,newsUrl};

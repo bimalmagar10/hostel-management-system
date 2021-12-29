@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import {ChevronRightIcon,TimeIcon} from "@chakra-ui/icons";
 
-export default function NoticeCard({item,onOpen,ref}){
+export default function NoticeCard({item,onOpen,refs}){
   	const hoverBgColor = useColorModeValue('pink.50','gray.900');
   	const boxColor = useColorModeValue('white','gray.700');
 	return (
@@ -28,7 +28,7 @@ export default function NoticeCard({item,onOpen,ref}){
                 border="1px solid"
                 borderColor={useColorModeValue('gray.300','gray.600')}
                 onClick={onOpen}
-                ref={ref}
+                ref={refs}
               >
                   <Tag fontSize="1.4rem" p=".5rem 1rem" mb="1.5rem" colorScheme="green">{item.label}</Tag>
                   <Heading fontSize="2.5rem" mb="1rem">
