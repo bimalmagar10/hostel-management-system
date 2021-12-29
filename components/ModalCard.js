@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import NoticeCard from "../components/NoticeCard";
 import {useRef} from "react";
-export default function ModalCard({item}){
+export default function ModalCard({key,item}){
 	const {isOpen,onOpen,onClose} = useDisclosure();
 	const btnRef = useRef();
 	return (

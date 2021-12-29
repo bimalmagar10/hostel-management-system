@@ -18,10 +18,8 @@ export default function News() {
            <Heading fontSize="3rem" mb="2rem">News And Notices</Heading>
            <SimpleGrid columns={2} spacing="2rem">
            {
-             newsAndNotices.map((item,i) => (
-              <>
-               <ModalCard key={i} item={item}/>
-               </>
+             newsAndNotices.map((item,index) => (
+               <ModalCard key={index} item={item}/>
               ))
            }
            </SimpleGrid>
