@@ -29,6 +29,7 @@ export default function NoticeCard({item,onOpen,ref}){
                 borderColor={useColorModeValue('gray.300','gray.600')}
                 onClick={onOpen}
                 ref={ref}
+                cursor="pointer"
               >
                   <Tag fontSize="1.4rem" p=".5rem 1rem" mb="1.5rem" colorScheme="green">{item.label}</Tag>
                   <Heading fontSize="2.5rem" mb="1rem">
