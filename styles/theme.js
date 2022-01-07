@@ -27,13 +27,21 @@ const theme = extendTheme({
 			'.chakra-heading':{
 				fontFamily:"inherit"
 			},
+			'.block-head th':{
+				fontSize:"1.6rem !important",
+				textAlign:"center"
+			},
+			'.block-data td':{
+				fontSize:'1.5rem',
+				textAlign:"center"
+			},
 		}
 	},
 	fonts,
 	colors:{
 		black:"#000",
 	},
-	breakpoints
+	breakpoints,
 });
 
 export default theme;
