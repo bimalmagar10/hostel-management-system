@@ -29,7 +29,8 @@ const theme = extendTheme({
 			},
 			'.block-head th':{
 				fontSize:"1.6rem !important",
-				textAlign:"center"
+				textAlign:"center",
+				paddingBottom:"3rem"
 			},
 			'.block-data td':{
 				fontSize:'1.5rem',
