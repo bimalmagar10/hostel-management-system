@@ -10,6 +10,7 @@ import {
 	TableCaption,
 	Divider,
 	IconButton,
+	Box
 } from "@chakra-ui/react";
 import {EditIcon} from "@chakra-ui/icons";
 import {useRouter} from "next/router";
@@ -65,11 +66,10 @@ function BlockDetails() {
 					</Tr>
 				</Tbody>
 				<Tfoot>
-					<Tr>
-						<Divider/>
-					</Tr>
+					<Tr/>
 				</Tfoot>
 			</Table>
+			<Box mt="3rem" bg="gray.300" h="1px" w="100%"/>
 		</>
 	);
 }

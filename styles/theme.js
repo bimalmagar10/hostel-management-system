@@ -28,13 +28,13 @@ const theme = extendTheme({
 				fontFamily:"inherit"
 			},
 			'.block-head th':{
-				fontSize:"1.6rem !important",
-				textAlign:"center",
+				fontSize:"1.5rem !important",
+				textAlign:"left",
 				paddingBottom:"3rem"
 			},
 			'.block-data td':{
-				fontSize:'1.5rem',
-				textAlign:"center"
+				fontSize:'1.4rem',
+				textAlign:"left"
 			},
 		}
 	},
