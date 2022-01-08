@@ -42,15 +42,15 @@ const sidebarContents = [
 		 },
 		 {
 		 	title:"Computer Engineering",
-		 	slug:"/students/manage-students/BCT"
+		 	slug:"/students/student-management/BCT"
 		 },
 		 {
 		 	title:"Electronics and Communication Engineering",
-		 	slug:"/students/manage-students/BEX"
+		 	slug:"/students/student-management/BEX"
 		 },
 		 {
 		 	title:"Civil Engineering",
-		 	slug:"/students/manage-students/BCE"
+		 	slug:"/students/student-management/BCE"
 		 }
 		],
 		hasToggle:true
@@ -125,4 +125,76 @@ const FormItems = [
 	}
 ];
 
-export {sidebarContents,newsAndNotices,newsUrl,FormItems};
+//For the student register form fields
+const StudentRegisterFields = [
+	{
+		label:'Full Name',
+		name:'fullname'
+	},
+
+	{
+		label:'Roll Number',
+		name:'rollno'
+	},
+	{
+		label:'Date of birth',
+		name:'dob'
+	},
+	{
+		label:'Phone Number',
+		name:'phone'
+	},
+	{
+		label:"Parent's Phone Number",
+		name:'pphone'
+	},
+	{
+		label:'E-mail',
+		name:'email'
+	},
+	{
+		label:'Address',
+		name:'address'
+	},
+	{
+		label:'Fingerprint',
+		name:'fingerprint'
+	},
+	{
+	    label:"Parent's Name",
+	    name:'pname'
+	}
+];
+const facultyOptions = [
+	{
+		option:'Electronics and Communication Engineering',
+		value:'BEX'
+	},
+	{
+		option:'Computer Engineering',
+		value:'BCT'
+	},
+	{
+		option:'Civil Engineering',
+		value:'BCE'
+	},
+    {
+    	option:'Geomatics Engineering',
+    	value:'BGE'
+    },
+    {
+    	option:'Mechanical Engineering',
+    	value:'BME'
+    },
+    {
+    	option:'Automobile Engineering',
+    	value:'BAM'
+    },
+    {
+    	option:'Electrical Engineering',
+    	value:'BEL'
+    }
+];
+
+
+export {sidebarContents,newsAndNotices,newsUrl,FormItems,StudentRegisterFields,facultyOptions};
