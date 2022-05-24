@@ -16,7 +16,7 @@ export default function Pagination({page,data,handlePage,handleNext,handlePrev})
 		     Prev
 		    </Button>
 		    {
-		    	data.map((item,index) => {
+		    	data && data.map((item,index) => {
 		    		return (
 		    			<Button 
 		    			key={index}

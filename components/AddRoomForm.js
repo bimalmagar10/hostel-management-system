@@ -1,20 +1,92 @@
+import {useEffect} from "react";
+import {roomEditFields} from "../utils/helpers";
 import {
 	FormControl,
 	FormLabel,
 	Input,
 	FormErrorMessage,
 	Button,
-	SimpleGrid
+	SimpleGrid,
+	useToast,
+	HStack
 } from "@chakra-ui/react";
 import {Formik,Form,Field} from "formik";
 import * as Yup from "yup";
 import {css} from "@emotion/react";
-import {FormItems} from "../utils/helpers";
+import {FormItems,ROOM_URL} from "../utils/helpers";
+import services from "../utils/services";
+import {useRouter} from "next/router";
+ 
+export default function AddRoomForm({props}) {
+	const toast = useToast();
+	const router = useRouter();
+    const room = props?.room;
+    const isAddMode = !room;
+	function handleSubmit(values,{setSubmitting}) {
+		isAddMode ?
+		createRoom(values,setSubmitting):
+		updateRoom(room._id,values,setSubmitting);
+	}
 
-export default function AddRoomForm() {
+	function createRoom(params,setSubmitting){
+		const {students} = params;
+		const lowercased = students.map(std => std.toLowerCase());
+		const newParams = {...params,students:lowercased};
+        services.create(ROOM_URL,newParams).then(() => {
+        	toast({
+        		title:'Room added successfully!!',
+        		status:'success',
+        		variant:'top-accent',
+        		isClosable:true,
+        		duration:5000
+        	})
+        	router.push(`/dashboard/room-management/block/${params.blockName}`);
+        	
+        }).catch(err => {
+        	toast({
+				title:`${err}`,
+				status:'error',
+				duration:3000,
+				isClosable:true,
+				variant:'top-accent'
+			})
+			setSubmitting(false);
+        });
+	}
+	function updateRoom(id,values,setSubmitting){
+		services.update(ROOM_URL,id,values).then(() => {
+			toast({
+				title:'Room updated successfully!',
+				status:'success',
+				variant:'top-accent',
+				isClosable:true,
+				duration:5000
+			});
+			router.push(`/dashboard/room-management/block/${values.blockName}`);
+			
+		}).catch(err => {
+			toast({
+				title:`${err}`,
+				status:'error',
+				duration:3000,
+				isClosable:true,
+				variant:'top-accent'
+			})
+			setSubmitting(false);
+		});
+	}
+
 	return (
 		<Formik
-		   initialValues={{name:'bimal'}}
+		   initialValues={{
+		   	roomName:'',
+		   	blockName:'',
+		   	tables:2,
+		   	chairs:2,
+		   	beds:2,
+		   	wardrobe:2,
+		   	students:['','']
+		   }}
 		   validationSchema={
 		   	Yup.object({
 		   		roomName:Yup.string()
@@ -22,6 +94,7 @@ export default function AddRoomForm() {
 		   		,
 		   		blockName:Yup.string()
 		   		.matches(/^[aA-zZ\s]+$/,"Only alphabets are allowed")
+		   		.oneOf(['A','B','C','D'],'Available blocks are A,B,C,D')
 		   		.max(1,'Must be one alphabet')
 		   		,
 		   		tables:Yup.number('Must be a number')
@@ -40,20 +113,32 @@ export default function AddRoomForm() {
 		   		.lessThan(4,'Must not be greater than four')
 		   		.integer('Must be an integer')
 		   		.positive('Must be positive'),
-		   		"student-1":Yup.string()
-		   		.matches(/^[A-Za-z0-9]+/g,'Roll number is invalid')
-		   		.max(12,'not more than 12 chracters')
-
+		   		students:Yup.array()
+		   		.of(Yup.string()
+		   			.matches(/^[A-Za-z0-9]+/g,'Roll number is invalid')
+		   			.max(12,'not more than 12 chracters')
+		   		)
+		   		.required('Required')
 		   	})
 		   }
-		   onSubmit={(values,{setSubmitting}) => {
-		   	setTimeout(() => {
- 		   		alert(JSON.stringify(values,null,2));
-		   		setSubmitting(false);
-		   	},1000)
-		   }}
+		   onSubmit={handleSubmit}
 		>
-		  {(props) => (
+		  {(props) => {
+		  	useEffect(() => {
+		  		if(!isAddMode){
+		  			roomEditFields.forEach(field => {
+		  				if(field === 'students') {
+		  					room[field].forEach((value,index) => {
+		  					  props.setFieldValue(`${field}[${index}]`,value,false);
+		  					})
+		  				} else {
+		  					  props.setFieldValue(field,room[field],false);
+		  			    }
+		  			})
+		  		}
+		  	}, [])
+
+		  	return (
 		  	  <Form>
 		  	    <SimpleGrid columns={2} spacingX="5rem" spacingY="1rem">
 			  	    {
@@ -74,17 +159,30 @@ export default function AddRoomForm() {
 			  	    	))
 			  	    }
 		  	    </SimpleGrid>
+		  	    <HStack align="center" mt="2rem">
 		  	  	<Button
-		  	  	  mt="2rem"
-		  	  	  size="lg"
+		  	  	  p="1.3rem"
+		  	  	  fontSize="1.3rem"
 		  	  	  colorScheme='teal'
 		  	  	  type="submit"
 		  	  	  isLoading={props.isSubmitting}
 		  	  	>
 		  	  		Submit
 		  	  	</Button>
+		  	  	{!isAddMode && (
+		  	  		<Button
+		  	  		   variant="link"
+		  	  		   fontSize="1.3rem"
+		  	  		   colorScheme="blue"
+		  	  		   onClick={() => router.push(`/dashboard/room-management/block/${room.blockName}`)}
+		  	  		>
+		  	  			Cancel
+		  	  		</Button>
+		  	  	)}
+		  	  	</HStack>
 		  	  </Form>
-		  	)}
+		  	  )
+		  	}}
 		</Formik>
 	);
 }

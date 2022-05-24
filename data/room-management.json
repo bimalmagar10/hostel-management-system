@@ -1,0 +1,32 @@
+[
+    {
+        "roomName": "R405",
+        "blockName": "D",
+        "tables": "2",
+        "chairs": 2,
+        "beds": 2,
+        "wardrobe": 2,
+        "students": [
+            "pas077bel035",
+            "pas077bel036"
+        ],
+        "id": 3,
+        "dateCreated": "2022-03-01T09:00:28.625Z",
+        "dateUpdated": "2022-03-01T09:00:28.625Z"
+    },
+    {
+        "roomName": "R308",
+        "blockName": "B",
+        "tables": 2,
+        "chairs": 2,
+        "beds": 2,
+        "wardrobe": 2,
+        "students": [
+            "pas074bex001",
+            "pas074bex002"
+        ],
+        "id": 4,
+        "dateCreated": "2022-04-23T06:24:22.621Z",
+        "dateUpdated": "2022-04-23T06:24:22.622Z"
+    }
+]

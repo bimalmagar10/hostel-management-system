@@ -4,7 +4,7 @@ import {
 	Box,
 	useColorModeValue
 }from "@chakra-ui/react";
-export default function Layout({children}) {
+export default function Layout({children,cookie}) {
 	const bgColor= useColorModeValue('gray.50','gray.800');
 	return (
 		<>

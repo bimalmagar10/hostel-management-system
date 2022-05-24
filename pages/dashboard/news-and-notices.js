@@ -1,20 +1,23 @@
 import {useState,useEffect} from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./../../components/Sidebar";
 import {
   Heading,
   SimpleGrid,
   useDisclosure
 } from "@chakra-ui/react";
-import {newsAndNotices} from "../utils/helpers";
-import ModalCard from "../components/ModalCard";
-import NoticeCard from "../components/NoticeCard";
+import {newsAndNotices} from "./../../utils/helpers";
+import ModalCard from "./../../components/ModalCard";
+import NoticeCard from "./../../components/NoticeCard";
 import Head from "next/head";
-import Pagination from "../components/Pagination";
-import {useFetch} from "../utils/utils";
+import Pagination from "./../../components/Pagination";
+import {useFetch} from "./../../utils/utils";
+import Layout from "../../components/Layout";
 export default function News() {
   const {data,loading} = useFetch();
   let [page,setPage] = useState(0);
   let [news,setNews] = useState([]);
+  console.log('from news',data);
+  
   useEffect(() =>{
       if(loading) return;
       setNews(data[page]);
@@ -44,7 +47,7 @@ export default function News() {
     setPage(index);
   };
   return (
-        <>
+        <Layout>
            <Head>
            <title>News and Notices</title>
            </Head>
@@ -64,6 +67,6 @@ export default function News() {
              handleNext={handleNext} 
              handlePrev={handlePrev}
            />
-        </>
+        </Layout>
   );
 }

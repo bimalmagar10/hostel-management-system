@@ -7,7 +7,7 @@ import {
 	Th,
 	useColorModeValue
 } from "@chakra-ui/react";
-export default function UserDetails(){
+export default function UserDetails({details:{student,room}}){
    return (
    	<Table
    	border="1px solid" 
@@ -18,7 +18,7 @@ export default function UserDetails(){
    		<Tbody>
    			<Tr>
    				<Td>Full Name</Td>
-   				<Td>Bimal Thapa Magar</Td>
+   				<Td>{student.fullname}</Td>
    			</Tr>
    			<Tr>
    				<Td>Gender</Td>
@@ -26,35 +26,35 @@ export default function UserDetails(){
    			</Tr>
    			<Tr>
    				<Td>Email</Td>
-   				<Td>inheritedbimal@gmail.com</Td>
+   				<Td>{student.email}</Td>
    			</Tr>
    			<Tr>
    				<Td>Date of birth</Td>
-   				<Td>2057-03-26(BS)&nbsp;&nbsp;2000-07-10(AD)</Td>
+   				<Td>{student.dob}(AD)</Td>
    			</Tr>
    			<Tr>
    				<Td>Father's Name</Td>
-   				<Td>Champa Sing Thapa Magar</Td>
+   				<Td>{student.fathersName}</Td>
    			</Tr>
    			<Tr>
    				<Td>Mother's Name</Td>
-   				<Td>Danu Maya Thapa</Td>
+   				<Td>{student.mothersName}</Td>
    			</Tr>
    			<Tr>
    				<Td>Address</Td>
-   				<Td>Bagar,Pokhara</Td>
+   				<Td>{student.address}</Td>
    			</Tr>
    			<Tr>
    				<Td>Block</Td>
-   				<Td>A</Td>
+   				<Td>{room.blockName}</Td>
    			</Tr>
    			<Tr>
    				<Td>Room No</Td>
-   				<Td>205</Td>
+   				<Td>{room.roomName}</Td>
    			</Tr>
    			<Tr>
    				<Td>Phone No</Td>
-   				<Td>9805807816</Td>
+   				<Td>{student.phone}</Td>
    			</Tr>
    			<Tr>
    				<Td>Is in Hostel</Td>

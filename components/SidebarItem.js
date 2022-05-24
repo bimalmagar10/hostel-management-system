@@ -23,9 +23,11 @@ export default function SidebarItem({contents}) {
         				{hasToggle ? <AccordionIcon/> : null}
         			</AccordionButton>
         		</h2>
+        		<AccordionPanel>
         		{
         			items ?<SidebarLink links={items}/>: null
         		}
+        		</AccordionPanel>
         	</Link>
         	</AccordionItem>
         </Accordion>
