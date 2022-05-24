@@ -81,7 +81,7 @@ const sidebarContents = [
 		 {
 		 	title:"Civil Engineering",
 		 	slug:"/students/manage-students/BCE"
-		 }
+		 },
 		 ...studentItems()
 		],
 		hasToggle:true
