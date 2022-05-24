@@ -10,7 +10,7 @@ export default function SidebarLink({links}){
         router.push(slug);
 	};
     return (
-    	<AccordionPanel>
+    	<>
     	    {
     	    	links.map((link,index) => (
     	    		<Link key={index} href={link.slug} style={{
@@ -27,6 +27,6 @@ export default function SidebarLink({links}){
     	    	))
     	    }
     		
-    	</AccordionPanel>
+    	</>
     );
 }

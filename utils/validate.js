@@ -21,9 +21,11 @@ const studentRegisterValidation = Yup.object({
      .required('Required'),
      address:Yup.string()
      .required('Required'),
-     pname:Yup.string()
-     .max(40,"Parent's name is long")
+     fathersName:Yup.string()
+     .max(40,"Too long")
      .required('Required'),
+     mothersName:Yup.string()
+     .max(40,"Too long"),
      faculty:Yup.string()
      .oneOf(['BEX','BCT','BCE','BGE','BME','BEL','BAM'],'Invalid faculty')
      .required('Required'),
